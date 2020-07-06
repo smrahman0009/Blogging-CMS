@@ -88,7 +88,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('admin.post.edit')->with('post',$post)->with('categories',Category::all());
     }
 
     /**
@@ -100,7 +102,33 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'category_id' => 'required',
+            'content' => 'required'
+        ]);
+        
+        $post = Post::find($id);
+
+        if($request->hasFile('featured')){
+            
+            $featured = $request->featured;
+            
+            $featured_new_name = time() . $featured->getClientOriginalName();
+            
+            $featured->move('uploads/posts',$featured_new_name);
+
+            $post->featured = 'uploads/posts/' . $featured_new_name;
+        }
+        
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+
+        $post->save();
+
+        toastr()->success('Post updatted successfully');
+        return redirect()->route('posts');
     }
 
     /**
@@ -132,5 +160,13 @@ class PostsController extends Controller
         $post->forceDelete();
         toastr()->success('Post deleted permanently.');
         return redirect()->back();
+    }
+    public function restore($id)
+    {
+        $post = Post::onlyTrashed()->where(['id' => $id])->first();
+
+        $post->restore();
+        toastr()->success('Post restore successfully.');
+        return redirect()->route('posts');
     }
 }

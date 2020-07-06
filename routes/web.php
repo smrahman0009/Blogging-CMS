@@ -30,6 +30,9 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/post/destroy/{id}', 'PostsController@destroy')->name('post-delete');
     Route::get('/post/trashed', 'PostsController@trashed')->name('post-trashed');
     Route::get('/post/kill/{id}', 'PostsController@kill')->name('post-kill');
+    Route::get('/post/restore/{id}', 'PostsController@restore')->name('post-restore');
+    Route::get('/post/edit/{id}', 'PostsController@edit')->name('post-edit');
+    Route::post('/post/update/{id}', 'PostsController@update')->name('post-update');
     
     Route::get('/categories', 'CategoriesController@index')->name('categories');
     Route::get('/category/create', 'CategoriesController@create')->name('category-create');

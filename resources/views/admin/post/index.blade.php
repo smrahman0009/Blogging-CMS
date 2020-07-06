@@ -26,7 +26,7 @@
                     {{$post->title}}
                 </td>
                 <td>
-                    <a href="{{route('category-delete',['id' => $post->id])}}" class="btn xs btn-info">
+                    <a href="{{route('post-edit',['id' => $post->id])}}" class="btn xs btn-info">
                         <span class="glyphicon glyphicon-trash">Edit</span>
                     </a>
                 </td>
