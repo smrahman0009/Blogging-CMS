@@ -39,7 +39,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('post-delete',['id' => $post->id])}}" class="btn xs btn-danger">
+                    <a href="{{route('post-kill',['id' => $post->id])}}" class="btn xs btn-danger">
                         <span class="glyphicon glyphicon-trash">Delete</span>
                     </a>
                 </td>
