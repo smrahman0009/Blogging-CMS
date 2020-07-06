@@ -14,23 +14,33 @@
             </th>
         </thead>
         <tbody>
-            @foreach($categories as $category)
+            @if($categories->count())
+                @foreach($categories as $category)
+                <tr>
+                    <td>
+                        {{$category->name}}
+                    </td>
+                    <td>
+                        <a href="{{route('category-edit',$category->id)}}" class="btn xs btn-info">
+                            <span class="glyphicon glyphicon-pencil">edit</span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{route('category-delete',['id' => $category->id])}}" class="btn xs btn-danger">
+                            <span class="glyphicon glyphicon-trash">delete</span>
+                        </a>
+                    </td>
+                </tr>
+                @endforeach    
+            @else
             <tr>
-                <td>
-                    {{$category->name}}
-                </td>
-                <td>
-                    <a href="{{route('category-edit',$category->id)}}" class="btn xs btn-info">
-                        <span class="glyphicon glyphicon-pencil">edit</span>
-                    </a>
-                </td>
-                <td>
-                    <a href="{{route('category-delete',['id' => $category->id])}}" class="btn xs btn-danger">
-                        <span class="glyphicon glyphicon-trash">delete</span>
-                    </a>
+                <td colspan="3">
+                        <h3 class="text-center">
+                            No category is created. 
+                        </h3>
                 </td>
             </tr>
-            @endforeach
+            @endif
         </tbody>
     </table>
 @endsection
