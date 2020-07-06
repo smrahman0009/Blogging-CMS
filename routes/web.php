@@ -40,4 +40,12 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/category/update/{id}', 'CategoriesController@update')->name('category-update');
     Route::get('/category/edit/{id}', 'CategoriesController@edit')->name('category-edit');
     Route::get('/category/destroy/{id}', 'CategoriesController@destroy')->name('category-delete');
+
+
+    Route::get('/tags', 'TagsController@index')->name('tags');
+    Route::get('/tag/create', 'TagsController@create')->name('tag-create');
+    Route::post('/tag/store', 'TagsController@store')->name('tag-store');
+    Route::post('/tag/update/{id}', 'TagsController@update')->name('tag-update');
+    Route::get('/tag/edit/{id}', 'TagsController@edit')->name('tag-edit');
+    Route::get('/tag/destroy/{id}', 'TagsController@destroy')->name('tag-delete');
 });

@@ -109,6 +109,17 @@
                                     <a href="{{route('category-create')}}">Create Category</a>
                                 </ul>
                             </ul>
+                            <ul class="list-group">
+                                <ul class="list-group-item">
+                                    <a href="{{route('tags')}}">View Tags</a>
+                                </ul>
+                            </ul>
+                            </ul>
+                            <ul class="list-group">
+                                <ul class="list-group-item">
+                                    <a href="{{route('tag-create')}}">Create Tags</a>
+                                </ul>
+                            </ul>
                         </div>
                     @endif
                     <div class="col-lg-8">
