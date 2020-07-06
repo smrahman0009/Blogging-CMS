@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -15,7 +16,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.post.index')->with('posts',Post::all());
     }
 
     /**
@@ -25,7 +26,12 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create')->with('categories',Category::all());
+        $categories = Category::all();
+        if(!$categories->count()){
+            toastr()->info('You need to create some category fist.');
+            return redirect()->route('category-create');
+        }
+        return view('admin.post.create')->with('categories',$categories);
     }
     
     /**
@@ -55,6 +61,7 @@ class PostsController extends Controller
                 'featured' => 'uploads/posts/' . $featured_new_name,
                 'category_id' => $request->category_id,
                 'content' => $request->content,
+                'slug' => Str::slug($request->title,'-'),
                 ]
             );
             
@@ -104,6 +111,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete();
+        toastr()->success('Post trashed successfully');
+        return redirect()->back();
     }
 }
