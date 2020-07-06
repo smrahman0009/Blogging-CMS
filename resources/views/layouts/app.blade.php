@@ -90,6 +90,11 @@
                             </ul>
                             <ul class="list-group">
                                 <ul class="list-group-item">
+                                    <a href="{{route('post-trashed')}}">Trashed Posts</a>
+                                </ul>
+                            </ul>
+                            <ul class="list-group">
+                                <ul class="list-group-item">
                                     <a href="{{route('post-create')}}">Create Post</a>
                                 </ul>
                             </ul>

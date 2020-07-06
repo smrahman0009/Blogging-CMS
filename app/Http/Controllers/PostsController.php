@@ -117,4 +117,11 @@ class PostsController extends Controller
         toastr()->success('Post trashed successfully');
         return redirect()->back();
     }
+
+    public function trashed()
+    {
+        $posts = Post::onlyTrashed()->get();
+
+        return view('admin.post.trashed')->with('posts',$posts);
+    }
 }
