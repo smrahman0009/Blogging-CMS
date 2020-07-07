@@ -33,6 +33,16 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="tags">Select Tag</label>
+                    @foreach($tags as $tag)
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="{{$tag->id}}" name="tags[]">
+                                {{$tag->tag}}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="form-group">
                     <label for="content">Content</label>
                     <textarea name="content" id="content" cols="5" rows="10" class="form-control @error('content') is-invalid @enderror"></textarea>
                     @error('content')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -31,7 +32,7 @@ class PostsController extends Controller
             toastr()->info('You need to create some category fist.');
             return redirect()->route('category-create');
         }
-        return view('admin.post.create')->with('categories',$categories);
+        return view('admin.post.create')->with('categories',$categories)->with('tags',Tag::all());
     }
     
     /**
@@ -42,6 +43,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request,[
             'title' => 'required',
             'featured' => 'required|image',
@@ -64,6 +66,8 @@ class PostsController extends Controller
                 'slug' => Str::slug($request->title,'-'),
                 ]
             );
+
+        $post->tags()->attach($request->tags);
             
         toastr()->success('Post created successfully');
         return redirect()->back();
