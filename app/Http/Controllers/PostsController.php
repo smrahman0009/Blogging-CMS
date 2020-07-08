@@ -6,6 +6,7 @@ use App\Category;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PostsController extends Controller
@@ -32,7 +33,8 @@ class PostsController extends Controller
             toastr()->info('You need to create some category fist.');
             return redirect()->route('category-create');
         }
-        return view('admin.post.create')->with('categories',$categories)->with('tags',Tag::all());
+        return view('admin.post.create')->with('categories',$categories)
+                                        ->with('tags',Tag::all());
     }
     
     /**
@@ -94,7 +96,8 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
-        return view('admin.post.edit')->with('post',$post)->with('categories',Category::all());
+        return view('admin.post.edit')->with('post',$post)->with('categories',Category::all())
+                                                            ->with('tags',Tag::all());
     }
 
     /**
@@ -106,6 +109,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->tags);
         $this->validate($request,[
             'title' => 'required',
             'category_id' => 'required',
@@ -129,6 +133,12 @@ class PostsController extends Controller
         $post->content = $request->content;
         $post->category_id = $request->category_id;
 
+        /*******  SYNC post_tag table   *******/
+        if($request->tags){
+            DB::table('post_tag')->where(['post_id' => $post->id])->delete();
+            $post->tags()->attach($request->tags);
+        }
+        /**************************************/
         $post->save();
 
         toastr()->success('Post updatted successfully');
