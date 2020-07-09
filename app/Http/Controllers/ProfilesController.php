@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDO;
 
 class ProfilesController extends Controller
 {
@@ -67,9 +69,48 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // dd($request->all());
+
+        // dd($request->tags);
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required|email',
+            'facebook' => 'required|url',
+            'gmail' => 'required|url',
+            'about' => 'required'
+        ]);
+        
+        $u_user = User::find(Auth::user()->id);
+          
+        if($request->hasFile('avatar')){
+            
+            $avatar = $request->avatar;
+            
+            $avatar_new_name = time() . $avatar->getClientOriginalName();
+            
+            $avatar->move('uploads/posts',$avatar_new_name);
+
+            $u_user->profile->avatar = 'uploads/posts/' . $avatar_new_name;
+
+        }
+
+        $u_user->name = $request->name;
+        $u_user->email = $request->email;
+        $u_user->profile->facebook = $request->facebook;
+        $u_user->profile->gmail = $request->gmail;
+        $u_user->profile->about = $request->about;
+        $u_user->profile->gmail = $request->gmail;
+        
+        if($request->has('password')){
+            $u_user->password = bcrypt($request->password);
+        }
+
+        $u_user->save();
+        $u_user->profile->save();
+        toastr()->success('Update profile successfully');
+        return redirect()->back();
     }
 
     /**

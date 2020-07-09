@@ -6,7 +6,7 @@
             My text
         </div>
         <div class="panel-body">
-            <form action="{{route('user-store')}}" method="post">
+            <form action="{{route('user-profile-update')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
                     <Nabel for="name">Name</Nabel>
@@ -29,6 +29,15 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                @if($user->profile->avatar)
+
+                <div class="form-group">
+                    <label for="avatar">Current Avatar</label>
+                    <div class="text-left">
+                        <img src="{{asset($user->profile->avatar)}}" class="rounded" alt="..." height="400px" width="500px" >
+                    </div>
+                </div>
+                @endif
                 <div class="form-group">
                     <label for="avatar">Avatar</label>
                     <input type="file" name="avatar" id="avatar" class="form-control @error('avatar') is-invalid @enderror">
@@ -47,14 +56,14 @@
                 </div>
                 <div class="form-group">
                     <label for="facebook">facebook</label>
-                    <input type="url" name="facebook" id="facebook" value="{{$user->profile->facebook}}" class="form-control @error('facebook') is-invalid @enderror">
+                    <input type="text" name="facebook" id="facebook" value="{{$user->profile->facebook}}" class="form-control @error('facebook') is-invalid @enderror">
                     @error('facebook')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="gmail">gmail</label>
-                    <input type="url" name="gmail" id="gmail" value="{{$user->profile->gmail}}" class="form-control @error('gmail') is-invalid @enderror">
+                    <input type="text" name="gmail" id="gmail" value="{{$user->profile->gmail}}" class="form-control @error('gmail') is-invalid @enderror">
                     @error('gmail')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
