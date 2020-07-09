@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/test/',function () {
+    return User::find(1)->profile;
 });
 
 Auth::routes();
@@ -40,6 +45,13 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/category/update/{id}', 'CategoriesController@update')->name('category-update');
     Route::get('/category/edit/{id}', 'CategoriesController@edit')->name('category-edit');
     Route::get('/category/destroy/{id}', 'CategoriesController@destroy')->name('category-delete');
+
+    Route::get('/users', 'UserController@index')->name('users');
+    Route::get('/user/create', 'UserController@create')->name('user-create');
+    Route::post('/user/store', 'UserController@store')->name('user-store');
+    Route::post('/user/update/{id}', 'UserController@update')->name('user-update');
+    Route::get('/user/edit/{id}', 'UserController@edit')->name('user-edit');
+    Route::get('/user/destroy/{id}', 'UserController@destroy')->name('user-delete');
 
 
     Route::get('/tags', 'TagsController@index')->name('tags');

@@ -85,6 +85,16 @@
                             </ul>
                             <ul class="list-group">
                                 <ul class="list-group-item">
+                                    <a href="{{route('users')}}">View Usrs</a>
+                                </ul>
+                            </ul>
+                            <ul class="list-group">
+                                <ul class="list-group-item">
+                                    <a href="{{route('user-create')}}">Create New User</a>
+                                </ul>
+                            </ul>
+                            <ul class="list-group">
+                                <ul class="list-group-item">
                                     <a href="{{route('posts')}}">View Posts</a>
                                 </ul>
                             </ul>
