@@ -83,16 +83,18 @@
                                     <a href="{{route('home')}}">Home</a>
                                 </ul>
                             </ul>
-                            <ul class="list-group">
-                                <ul class="list-group-item">
-                                    <a href="{{route('users')}}">View Usrs</a>
+                            @if(Auth::user()->profile->is_admin)
+                                <ul class="list-group">
+                                    <ul class="list-group-item">
+                                        <a href="{{route('users')}}">View Usrs</a>
+                                    </ul>
                                 </ul>
-                            </ul>
-                            <ul class="list-group">
-                                <ul class="list-group-item">
-                                    <a href="{{route('user-create')}}">Create New User</a>
+                                <ul class="list-group">
+                                    <ul class="list-group-item">
+                                        <a href="{{route('user-create')}}">Create New User</a>
+                                    </ul>
                                 </ul>
-                            </ul>
+                            @endif
                             <ul class="list-group">
                                 <ul class="list-group-item">
                                     <a href="{{route('posts')}}">View Posts</a>

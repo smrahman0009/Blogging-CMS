@@ -49,6 +49,7 @@ class UserController extends Controller
         Profile::create(
             [
                 'user_id' => $user->id,
+                'avatar' => 'uploads/profile/profile_male_1.png'
             ]
         );
 
