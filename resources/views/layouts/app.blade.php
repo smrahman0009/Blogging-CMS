@@ -97,6 +97,11 @@
                             @endif
                             <ul class="list-group">
                                 <ul class="list-group-item">
+                                    <a href="{{route('user-profile')}}">My Profile</a>
+                                </ul>
+                            </ul>
+                            <ul class="list-group">
+                                <ul class="list-group-item">
                                     <a href="{{route('posts')}}">View Posts</a>
                                 </ul>
                             </ul>

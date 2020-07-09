@@ -31,6 +31,10 @@ Route::group(['middleware' => 'auth'],function(){
 
     Route::get('/home', 'HomeController@index')->name('home');
 
+    Route::get('/profiles', 'ProfilesController@index')->name('user-profile');
+    Route::post('/profile/update/', 'ProfilesController@update')->name('user-profile-update');
+    Route::get('/profile/destroy/{id}', 'ProfilesController@destroy')->name('profile-delete');
+
     Route::get('posts', 'PostsController@index')->name('posts');
     Route::get('/post/create', 'PostsController@create')->name('post-create');
     Route::post('/post/store', 'PostsController@store')->name('post-store');
