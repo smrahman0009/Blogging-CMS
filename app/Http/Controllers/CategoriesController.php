@@ -99,6 +99,10 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
+
+        foreach($category->posts as $post){
+            $post->forceDelete();
+        }
         
         toastr()->warning('Category deleted successfully');
         $category->delete();
