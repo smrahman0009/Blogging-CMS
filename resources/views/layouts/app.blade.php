@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @toastr_css
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -137,6 +138,13 @@
                                     <a href="{{route('tag-create')}}">Create Tags</a>
                                 </ul>
                             </ul>
+                            @if(Auth::user()->profile->is_admin)
+                            <ul class="list-group">
+                                <ul class="list-group-item">
+                                    <a href="{{route('setting')}}">Setting</a>
+                                </ul>
+                            </ul>
+                            @endif
                         </div>
                     @endif
                     <div class="col-lg-8">
@@ -146,6 +154,7 @@
             </div>
         </main>
     </div>
+    @yield('scripts')
 </body>
 @jquery
 @toastr_js

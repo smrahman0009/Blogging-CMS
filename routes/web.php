@@ -59,9 +59,10 @@ Route::group(['middleware' => 'auth'],function(){
         Route::post('/user/update/{id}', 'UserController@update')->name('user-update');
         Route::get('/user/edit/{id}', 'UserController@edit')->name('user-edit');
         Route::get('/user/destroy/{id}', 'UserController@destroy')->name('user-delete');
+
+        Route::get('/setting', 'SettingsController@index')->name('setting');
+        Route::post('/setting/update', 'SettingsController@update')->name('setting-update');
     });
-
-
 
     Route::get('/tags', 'TagsController@index')->name('tags');
     Route::get('/tag/create', 'TagsController@create')->name('tag-create');
@@ -69,4 +70,5 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/tag/update/{id}', 'TagsController@update')->name('tag-update');
     Route::get('/tag/edit/{id}', 'TagsController@edit')->name('tag-edit');
     Route::get('/tag/destroy/{id}', 'TagsController@destroy')->name('tag-delete');
+
 });

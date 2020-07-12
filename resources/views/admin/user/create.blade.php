@@ -9,8 +9,8 @@
             <form action="{{route('user-store')}}" method="post">
                 {{csrf_field()}}
                 <div class="form-group">
-                    <Nabel for="name">Name</Nabel>
-                    <input type="text" name="name" idd="name" class="form-control @error('name')is-invalid @enderror">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="form-control @error('name')is-invalid @enderror">
                     @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>                      
                     @enderror

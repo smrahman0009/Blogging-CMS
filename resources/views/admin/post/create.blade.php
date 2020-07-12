@@ -55,4 +55,19 @@
             </form>
         </div>
     </div>
+@section('styles')
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>tinymce.init({selector:'textarea'});</script>
+@endsection
+
+@section('scripts')
+ <!-- include summernote css/js -->
+ <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+@endsection
+
+<script>
+    $(document).ready(function() {
+        $('#content').summernote();
+    });
+</script>
 @endsection
