@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','FrontEndController@index')->name('index');
 
 Route::get('/test/',function () {
     return Auth::user()->profile->is_admin;
