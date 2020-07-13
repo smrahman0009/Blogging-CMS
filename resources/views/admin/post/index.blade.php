@@ -10,10 +10,13 @@
                 Title
             </th>
             <th>
-                Edit
+                Category
             </th>
             <th>
-                Delete
+                Tags
+            </th>
+            <th>
+                Action
             </th>
         </thead>
         <tbody>
@@ -27,14 +30,24 @@
                         {{$post->title}}
                     </td>
                     <td>
-                        <a href="{{route('post-edit',['id' => $post->id])}}" class="btn xs btn-info">
-                            <span class="glyphicon glyphicon-trash">Edit</span>
-                        </a>
+                        {{$post->category->name}}
                     </td>
                     <td>
-                        <a href="{{route('post-delete',['id' => $post->id])}}" class="btn xs btn-danger">
-                            <span class="glyphicon glyphicon-trash">Trash</span>
-                        </a>
+                        @foreach($post->tags as $tag)
+                            {{ '#' . $tag->tag}}
+                        @endforeach
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn dropdown-toggle btn-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item btn sm " href="{{route('post-delete',['id' => $post->id])}}">Trash</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item btn sm " href="{{route('post-edit',['id' => $post->id])}}">Edit</a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
