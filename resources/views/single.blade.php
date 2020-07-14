@@ -46,7 +46,7 @@
 
                             <span class="category">
                                 <i class="seoicon-tags"></i>
-                                <a href="#">{{$post->category->name}}</a>
+                                <a href="{{route('category-single',$post->category_id)}}">{{$post->category->name}}</a>
                             </span>
 
                         </div>
@@ -176,15 +176,9 @@
                         </div>
 
                         <div class="tags-wrap">
-                            <a href="#" class="w-tags-item">SEO</a>
-                            <a href="#" class="w-tags-item">Advertising</a>
-                            <a href="#" class="w-tags-item">Business</a>
-                            <a href="#" class="w-tags-item">Optimization</a>
-                            <a href="#" class="w-tags-item">Digital Marketing</a>
-                            <a href="#" class="w-tags-item">Social</a>
-                            <a href="#" class="w-tags-item">Keyword</a>
-                            <a href="#" class="w-tags-item">Strategy</a>
-                            <a href="#" class="w-tags-item">Audience</a>
+                            @foreach($tags as $tag)
+                                <a href="#" class="w-tags-item">{{$tag->tag}}</a>
+                            @endforeach
                         </div>
                     </div>
                 </aside>

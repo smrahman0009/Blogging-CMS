@@ -19,6 +19,8 @@ Route::get('/','FrontEndController@index')->name('index');
 
 Route::get('/post/{slug}','FrontEndController@singlePost')->name('single-post');
 
+Route::get('/category/{id}','FrontEndController@category')->name('category-single');
+
 Route::get('/test/',function () {
     return Auth::user()->profile->is_admin;
     return User::find(1)->profile;
@@ -35,22 +37,22 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/profile/update/', 'ProfilesController@update')->name('user-profile-update');
     Route::get('/profile/destroy/{id}', 'ProfilesController@destroy')->name('profile-delete');
 
-    Route::get('posts', 'PostsController@index')->name('posts');
-    Route::get('/post/create', 'PostsController@create')->name('post-create');
-    Route::post('/post/store', 'PostsController@store')->name('post-store');
-    Route::get('/post/destroy/{id}', 'PostsController@destroy')->name('post-delete');
-    Route::get('/post/trashed', 'PostsController@trashed')->name('post-trashed');
-    Route::get('/post/kill/{id}', 'PostsController@kill')->name('post-kill');
-    Route::get('/post/restore/{id}', 'PostsController@restore')->name('post-restore');
-    Route::get('/post/edit/{id}', 'PostsController@edit')->name('post-edit');
-    Route::post('/post/update/{id}', 'PostsController@update')->name('post-update');
+    Route::get('posts_', 'PostsController@index')->name('posts');
+    Route::get('/post_/create', 'PostsController@create')->name('post-create');
+    Route::post('/post_/store', 'PostsController@store')->name('post-store');
+    Route::get('/post_/destroy/{id}', 'PostsController@destroy')->name('post-delete');
+    Route::get('/post_/trashed', 'PostsController@trashed')->name('post-trashed');
+    Route::get('/post_/kill/{id}', 'PostsController@kill')->name('post-kill');
+    Route::get('/post_/restore/{id}', 'PostsController@restore')->name('post-restore');
+    Route::get('/post_/edit/{id}', 'PostsController@edit')->name('post-edit');
+    Route::post('/post_/update/{id}', 'PostsController@update')->name('post-update');
     
-    Route::get('/categories', 'CategoriesController@index')->name('categories');
-    Route::get('/category/create', 'CategoriesController@create')->name('category-create');
-    Route::post('/category/store', 'CategoriesController@store')->name('category-store');
-    Route::post('/category/update/{id}', 'CategoriesController@update')->name('category-update');
-    Route::get('/category/edit/{id}', 'CategoriesController@edit')->name('category-edit');
-    Route::get('/category/destroy/{id}', 'CategoriesController@destroy')->name('category-delete');
+    Route::get('/categories_', 'CategoriesController@index')->name('categories');
+    Route::get('/category_/create', 'CategoriesController@create')->name('category-create');
+    Route::post('/category_/store', 'CategoriesController@store')->name('category-store');
+    Route::post('/category_/update/{id}', 'CategoriesController@update')->name('category-update');
+    Route::get('/category_/edit/{id}', 'CategoriesController@edit')->name('category-edit');
+    Route::get('/category_/destroy/{id}', 'CategoriesController@destroy')->name('category-delete');
 
     Route::group(['middleware' => 'admin'],function(){
         Route::get('/users', 'UserController@index')->name('users');
