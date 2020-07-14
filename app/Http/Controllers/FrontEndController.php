@@ -25,11 +25,17 @@ class FrontEndController extends Controller
 
     public function singlePost($slug){
 
+        
         $post = Post::where(['slug'=>$slug])->first();
-        // dd($post->title);
+
+        $next_id = Post::where('id', '>', $post->id)->min('id');
+        $pre_id = Post::where('id', '<', $post->id)->max('id');
+        // dd(Post::find($pre_id)->first());
         return view('single')->with('post',$post)
                             ->with('categories',Category::take(5)->get())
                             ->with('setting',Setting::first())
-                            ->with('title',Setting::first()->site_name);
+                            ->with('title',Setting::first()->site_name)
+                            ->with('next_post',Post::find($next_id))
+                            ->with('pre_post',Post::find($pre_id));
     }
 }

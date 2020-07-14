@@ -86,7 +86,7 @@
                 <div class="blog-details-author">
 
                     <div class="blog-details-author-thumb">
-                        <img src="app/img/blog-details-author.png" alt="Author">
+                        <img src="{{asset('app/img/blog-details-author.png')}}" alt="Author">
                     </div>
 
                     <div class="blog-details-author-content">
@@ -100,19 +100,19 @@
                         <div class="socials">
 
                             <a href="#" class="social__item">
-                                <img src="app/svg/circle-facebook.svg" alt="facebook">
+                                <img src="{{asset('app/svg/circle-facebook.svg')}}" alt="facebook">
                             </a>
 
                             <a href="#" class="social__item">
-                                <img src="app/svg/twitter.svg" alt="twitter">
+                                <img src="{{asset('app/svg/twitter.svg')}}" alt="twitter">
                             </a>
 
                             <a href="#" class="social__item">
-                                <img src="app/svg/google.svg" alt="google">
+                                <img src="{{asset('app/svg/google.svg')}}" alt="google">
                             </a>
 
                             <a href="#" class="social__item">
-                                <img src="app/svg/youtube.svg" alt="youtube">
+                                <img src="{{asset('app/svg/youtube.svg')}}" alt="youtube">
                             </a>
 
                         </div>
@@ -120,27 +120,29 @@
                 </div>
 
                 <div class="pagination-arrow">
+                    @if($pre_post)
+                        <a href="{{route('single-post',$pre_post->slug)}}" class="btn-prev-wrap">
+                            <svg class="btn-prev">
+                                <use xlink:href="#arrow-left"></use>
+                            </svg>
+                            <div class="btn-content">
+                                <div class="btn-content-title">Previous Post</div>
+                                <p class="btn-content-subtitle">{{$pre_post->title}}</p>
+                            </div>
+                        </a>
+                    @endif
 
-                    <a href="#" class="btn-prev-wrap">
-                        <svg class="btn-prev">
-                            <use xlink:href="#arrow-left"></use>
-                        </svg>
-                        <div class="btn-content">
-                            <div class="btn-content-title">Next Post</div>
-                            <p class="btn-content-subtitle">Claritas Est Etiam Processus</p>
-                        </div>
-                    </a>
-
-                    <a href="#" class="btn-next-wrap">
-                        <div class="btn-content">
-                            <div class="btn-content-title">Previous Post</div>
-                            <p class="btn-content-subtitle">Duis Autem Velius</p>
-                        </div>
-                        <svg class="btn-next">
-                            <use xlink:href="#arrow-right"></use>
-                        </svg>
-                    </a>
-
+                    @if($next_post)
+                        <a href="{{route('single-post',$next_post->slug)}}" class="btn-next-wrap">
+                            <div class="btn-content">
+                                <div class="btn-content-title">Next Post</div>
+                                <p class="btn-content-subtitle">{{$next_post->title}}</p>
+                            </div>
+                            <svg class="btn-next">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+                        </a>
+                    @endif
                 </div>
 
                 <div class="comments">
