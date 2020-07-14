@@ -154,12 +154,9 @@
                             <span class="long-line"></span>
                         </div>
                     </div>
+
+                    @include('includes.disqus')
                 </div>
-
-                <div class="row">
-
-                </div>
-
 
             </div>
 
