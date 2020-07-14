@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','FrontEndController@index')->name('index');
 
+Route::get('/{slug}','FrontEndController@singlePost')->name('single-post');
+
 Route::get('/test/',function () {
     return Auth::user()->profile->is_admin;
     return User::find(1)->profile;

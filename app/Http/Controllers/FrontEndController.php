@@ -22,4 +22,14 @@ class FrontEndController extends Controller
                             ->with('codeig_niter',Category::orderBy('created_at','desc')->where('name','Codeigniter')->get()->first())
                             ->with('setting',Setting::first());
     }
+
+    public function singlePost($slug){
+
+        $post = Post::where(['slug'=>$slug])->first();
+        // dd($post->title);
+        return view('single')->with('post',$post)
+                            ->with('categories',Category::take(5)->get())
+                            ->with('setting',Setting::first())
+                            ->with('title',Setting::first()->site_name);
+    }
 }
