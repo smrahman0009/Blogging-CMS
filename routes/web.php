@@ -23,6 +23,8 @@ Route::get('/category/{id}','FrontEndController@category')->name('category-singl
 
 Route::get('/tag/{id}','FrontEndController@tag')->name('tag-single');
 
+Route::get('/search','FrontEndController@searchResult')->name('search-result');
+
 Route::get('/test/',function () {
     return Auth::user()->profile->is_admin;
     return User::find(1)->profile;

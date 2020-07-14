@@ -65,4 +65,15 @@ class FrontEndController extends Controller
                                 ->with('tags',Tag::all());
 
     }
+
+    public function searchResult(){
+        $post = Post::where('title','like','%' . request('query') . '%')->get();
+
+        return view('search')->with('posts',$post)
+                            ->with('tags',Tag::take(5)->get())
+                            ->with('search_result',request('query'))
+                            ->with('categories',Category::take(5)->get())
+                            ->with('setting',Setting::first())
+                            ->with('title',Setting::first()->site_name);
+    }
 }
