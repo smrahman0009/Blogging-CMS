@@ -21,6 +21,8 @@ Route::get('/post/{slug}','FrontEndController@singlePost')->name('single-post');
 
 Route::get('/category/{id}','FrontEndController@category')->name('category-single');
 
+Route::get('/tag/{id}','FrontEndController@tag')->name('tag-single');
+
 Route::get('/test/',function () {
     return Auth::user()->profile->is_admin;
     return User::find(1)->profile;
@@ -66,11 +68,11 @@ Route::group(['middleware' => 'auth'],function(){
         Route::post('/setting/update', 'SettingsController@update')->name('setting-update');
     });
 
-    Route::get('/tags', 'TagsController@index')->name('tags');
-    Route::get('/tag/create', 'TagsController@create')->name('tag-create');
-    Route::post('/tag/store', 'TagsController@store')->name('tag-store');
-    Route::post('/tag/update/{id}', 'TagsController@update')->name('tag-update');
-    Route::get('/tag/edit/{id}', 'TagsController@edit')->name('tag-edit');
-    Route::get('/tag/destroy/{id}', 'TagsController@destroy')->name('tag-delete');
+    Route::get('/tags_', 'TagsController@index')->name('tags');
+    Route::get('/tag_/create', 'TagsController@create')->name('tag-create');
+    Route::post('/tag_/store', 'TagsController@store')->name('tag-store');
+    Route::post('/tag_/update/{id}', 'TagsController@update')->name('tag-update');
+    Route::get('/tag_/edit/{id}', 'TagsController@edit')->name('tag-edit');
+    Route::get('/tag_/destroy/{id}', 'TagsController@destroy')->name('tag-delete');
 
 });
