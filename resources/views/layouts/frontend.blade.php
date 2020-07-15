@@ -65,9 +65,9 @@
                     </div>
 
                     <div class="images-block">
-                        <img src="app/img/subscr-gear.png" alt="gear" class="gear">
-                        <img src="app/img/subscr1.png" alt="mail" class="mail">
-                        <img src="app/img/subscr-mailopen.png" alt="mail" class="mail-2">
+                        <img src="{{asset('app/img/subscr-gear.png')}}" alt="gear" class="gear">
+                        <img src="{{asset('app/img/subscr1.png')}}" alt="mail" class="mail">
+                        <img src="{{asset('app/img/subscr-mailopen.png')}}" alt="mail" class="mail-2">
                     </div>
                 </div>
             </div>
@@ -153,9 +153,9 @@
 <script src="{{asset('app/js/velocity.min.js')}}"></script>
 <script src="{{asset('app/js/ScrollMagic.min.js')}}"></script>
 <script src="{{asset('app/js/animation.velocity.min.js')}}"></script>
-
-
 <!-- ...end JS Script -->
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f0e7f356e8f05f9"></script>
 
 </body>
 </html>
