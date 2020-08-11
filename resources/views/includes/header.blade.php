@@ -1,14 +1,7 @@
 <header class="header" id="site-header">
         <div class="container">
                 <div class="header-content-wrapper">
-                    <div class="logo">
-                        <div class="logo-text">
-                            <a href="{{route('index')}}">
-                                <div class="logo-title">{{$title}}</div>
-                            </a>
-                        </div>
-                    </div>
-
+                    
                     <nav id="primary-menu" class="primary-menu">
                         <a href='javascript:void(0)' id="menu-icon-trigger" class="menu-icon-trigger showhide">
                             <span id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: hidden">

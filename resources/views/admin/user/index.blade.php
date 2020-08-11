@@ -4,6 +4,11 @@
     <table class="table table-hover">
         <thead>
             <th>
+                <a type="button" href="{{route('user-create')}}"  class="btn btn-success">New User</a>
+            </th>
+        </thead>
+        <thead>
+            <th>
                 Imgae
             </th>
             <th>

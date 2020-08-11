@@ -4,6 +4,11 @@
     <table class="table table-hover">
         <thead>
             <th>
+                 <a type="button" class="btn btn-secondary" href="{{route('posts')}}">Posts</a>
+            </th>
+        </thead>
+        <thead>
+            <th>
                 Imgae
             </th>
             <th>
@@ -38,6 +43,11 @@
                     </td>
                 </tr>
                 @endforeach
+                <tr>
+                    <td>
+                        {{$posts->links()}}
+                    </td>
+                </tr>
             @else
             <tr>
                 <td colspan="4">

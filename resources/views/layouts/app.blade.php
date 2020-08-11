@@ -57,6 +57,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('user-profile')}}">
+                                        Profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -87,55 +90,23 @@
                             @if(Auth::user()->profile->is_admin)
                                 <ul class="list-group">
                                     <ul class="list-group-item">
-                                        <a href="{{route('users')}}">View Usrs</a>
-                                    </ul>
-                                </ul>
-                                <ul class="list-group">
-                                    <ul class="list-group-item">
-                                        <a href="{{route('user-create')}}">Create New User</a>
+                                        <a href="{{route('users')}}">Users</a>
                                     </ul>
                                 </ul>
                             @endif
                             <ul class="list-group">
                                 <ul class="list-group-item">
-                                    <a href="{{route('user-profile')}}">My Profile</a>
+                                    <a href="{{route('posts')}}">Posts</a>
                                 </ul>
                             </ul>
                             <ul class="list-group">
                                 <ul class="list-group-item">
-                                    <a href="{{route('posts')}}">View Posts</a>
+                                    <a href="{{route('categories')}}">Categories</a>
                                 </ul>
                             </ul>
                             <ul class="list-group">
                                 <ul class="list-group-item">
-                                    <a href="{{route('post-trashed')}}">Trashed Posts</a>
-                                </ul>
-                            </ul>
-                            <ul class="list-group">
-                                <ul class="list-group-item">
-                                    <a href="{{route('post-create')}}">Create Post</a>
-                                </ul>
-                            </ul>
-                            <ul class="list-group">
-                                <ul class="list-group-item">
-                                    <a href="{{route('categories')}}">View Categories</a>
-                                </ul>
-                            </ul>
-                            </ul>
-                            <ul class="list-group">
-                                <ul class="list-group-item">
-                                    <a href="{{route('category-create')}}">Create Category</a>
-                                </ul>
-                            </ul>
-                            <ul class="list-group">
-                                <ul class="list-group-item">
-                                    <a href="{{route('tags')}}">View Tags</a>
-                                </ul>
-                            </ul>
-                            </ul>
-                            <ul class="list-group">
-                                <ul class="list-group-item">
-                                    <a href="{{route('tag-create')}}">Create Tags</a>
+                                    <a href="{{route('tags')}}">Tags</a>
                                 </ul>
                             </ul>
                             @if(Auth::user()->profile->is_admin)

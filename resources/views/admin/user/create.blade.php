@@ -1,11 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Create New User
-        </div>
-        <div class="panel-body">
+    <div class="card">
+        <div class="card-body">
             <form action="{{route('user-store')}}" method="post">
                 {{csrf_field()}}
                 <div class="form-group">

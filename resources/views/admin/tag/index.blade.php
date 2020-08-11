@@ -4,6 +4,11 @@
     <table class="table table-hover">
         <thead>
             <th>
+                 <a type="button" class="btn btn-success" href="{{route('tag-create')}}">Create New</a>
+            </th>
+        </thead>
+        <thead>
+            <th>
                 Category
             </th>
             <th>
@@ -31,7 +36,12 @@
                         </a>
                     </td>
                 </tr>
-                @endforeach    
+                @endforeach
+                <tr>
+                    <td>
+                        {{$tags->links()}}
+                    </td>
+                </tr>    
             @else
             <tr>
                 <td colspan="3">

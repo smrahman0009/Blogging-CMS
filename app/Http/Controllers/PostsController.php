@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use App\Tag;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use League\Flysystem\File;
+use Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
 {
@@ -19,7 +22,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('admin.post.index')->with('posts',Post::all());
+        $posts = Post::paginate(7);
+        return view('admin.post.index')->with('posts', $posts);
     }
 
     /**
@@ -57,9 +61,17 @@ class PostsController extends Controller
         $featured = $request->featured;
         
         $featured_new_name = time() . $featured->getClientOriginalName();
-        
+
+      
         $featured->move('uploads/posts',$featured_new_name);
         
+        $image_path = public_path("/uploads/posts/". $featured_new_name);
+        $img = Image::make($image_path)->resize(1920, 1080, function($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save($image_path);
+
+
         $post = Post::create(
             [
                 'title' => $request->title,
@@ -128,6 +140,12 @@ class PostsController extends Controller
             
             $featured->move('uploads/posts',$featured_new_name);
 
+            $image_path = public_path("/uploads/posts/" . $featured_new_name);
+            $img = Image::make($image_path)->resize(1920, 1080, function($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($image_path);
+            unlink($post->featured);
             $post->featured = 'uploads/posts/' . $featured_new_name;
         }
         
@@ -164,7 +182,7 @@ class PostsController extends Controller
 
     public function trashed()
     {
-        $posts = Post::onlyTrashed()->get();
+        $posts = Post::onlyTrashed()->paginate(7);
 
         return view('admin.post.trashed')->with('posts',$posts);
     }
@@ -172,6 +190,7 @@ class PostsController extends Controller
     public function kill($id)
     {
         $post = Post::onlyTrashed()->where(['id' => $id])->first();
+        unlink($post->featured);
 
         $post->forceDelete();
         toastr()->success('Post deleted permanently.');

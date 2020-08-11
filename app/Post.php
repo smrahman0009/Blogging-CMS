@@ -12,7 +12,6 @@ class Post extends Model
     protected $fillable = ['title','content','category_id','featured','slug','user_id'];
 
     protected $dates = ['deleted_at'];
-
     
     public function category(){
         return $this->belongsTo(Category::class);
