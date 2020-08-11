@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" style="background-color: #298391;">
         <div class="container">
                 <div class="header-content-wrapper">
                     <div class="logo">
