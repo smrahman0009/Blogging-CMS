@@ -215,7 +215,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
-                                <h4 class="h1 heading-title">{{$wordpress->name}}</h4>
+                                <h4 class="h1 heading-title">{{$category_name_1->name}}</h4>
                                 <div class="heading-line">
                                     <span class="short-line"></span>
                                     <span class="long-line"></span>
@@ -225,7 +225,7 @@
                     </div>
                     <div class="row">
                         <div class="case-item-wrap">
-                            @foreach($wordpress->posts()->take(3)->get() as $post)
+                            @foreach($category_name_1->posts()->take(3)->get() as $post)
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="case-item">
                                     <div class="case-item__thumb">
@@ -244,7 +244,7 @@
                        
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
-                                <h4 class="h1 heading-title">{{$node_js->name}}</h4>
+                                <h4 class="h1 heading-title">{{$category_name_2->name}}</h4>
                                 <div class="heading-line">
                                     <span class="short-line"></span>
                                     <span class="long-line"></span>
@@ -255,7 +255,7 @@
                     </div>
                     <div class="row">
                         <div class="case-item-wrap">
-                            @foreach($node_js->posts()->take(3)->get() as $post) 
+                            @foreach($category_name_2->posts()->take(3)->get() as $post) 
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="case-item">
                                     <div class="case-item__thumb">
@@ -273,7 +273,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
-                                <h4 class="h1 heading-title">{{$codeig_niter->name}}</h4>
+                                <h4 class="h1 heading-title">{{$category_name_3->name}}</h4>
                                 <div class="heading-line">
                                     <span class="short-line"></span>
                                     <span class="long-line"></span>
@@ -283,7 +283,7 @@
                     </div>
                     <div class="row">
                         <div class="case-item-wrap">
-                            @foreach($codeig_niter->posts()->take(3)->get() as $post)
+                            @foreach($category_name_3->posts()->take(3)->get() as $post)
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="case-item">
                                     <div class="case-item__thumb">
