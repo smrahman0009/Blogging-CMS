@@ -87,13 +87,13 @@
                                     <a href="{{route('home')}}">Home</a>
                                 </ul>
                             </ul>
-                            @if(Auth::user()->profile->is_admin)
+                            {{-- @if(Auth::user()->profile->is_admin) --}}
                                 <ul class="list-group">
                                     <ul class="list-group-item">
                                         <a href="{{route('users')}}">Users</a>
                                     </ul>
                                 </ul>
-                            @endif
+                            {{-- @endif --}}
                             <ul class="list-group">
                                 <ul class="list-group-item">
                                     <a href="{{route('posts')}}">Posts</a>
@@ -109,13 +109,13 @@
                                     <a href="{{route('tags')}}">Tags</a>
                                 </ul>
                             </ul>
-                            @if(Auth::user()->profile->is_admin)
+                            {{-- @if(Auth::user()->profile->is_admin) --}}
                             <ul class="list-group">
                                 <ul class="list-group-item">
                                     <a href="{{route('setting')}}">Setting</a>
                                 </ul>
                             </ul>
-                            @endif
+                            {{-- @endif --}}
                         </div>
                     @endif
                     <div class="col-lg-8">
