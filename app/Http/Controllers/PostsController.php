@@ -65,11 +65,11 @@ class PostsController extends Controller
       
         $featured->move('uploads/posts',$featured_new_name);
         
-        $image_path = public_path("/uploads/posts/". $featured_new_name);
-        $img = Image::make($image_path)->resize(1920, 1080, function($constraint) {
-            $constraint->aspectRatio();
-        });
-        $img->save($image_path);
+        // $image_path = public_path("/uploads/posts/". $featured_new_name);
+        // $img = Image::make($image_path)->resize(1920, 1080, function($constraint) {
+        //     $constraint->aspectRatio();
+        // });
+        // $img->save($image_path);
 
 
         $post = Post::create(
@@ -140,11 +140,11 @@ class PostsController extends Controller
             
             $featured->move('uploads/posts',$featured_new_name);
 
-            $image_path = public_path("/uploads/posts/" . $featured_new_name);
-            $img = Image::make($image_path)->resize(1920, 1080, function($constraint) {
-                $constraint->aspectRatio();
-            });
-            $img->save($image_path);
+            // $image_path = public_path("/uploads/posts/" . $featured_new_name);
+            // $img = Image::make($image_path)->resize(1920, 1080, function($constraint) {
+            //     $constraint->aspectRatio();
+            // });
+            // $img->save($image_path);
             unlink($post->featured);
             $post->featured = 'uploads/posts/' . $featured_new_name;
         }

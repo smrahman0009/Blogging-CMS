@@ -14,8 +14,8 @@ class FrontEndController extends Controller
         $categories = Category::orderBy('created_at','asc')->take(3)->get();
         
         $category_name_1 = $categories[0]->name;
-        $category_name_2 = $categories[2]->name;
-        $category_name_3 = $categories[0]->name;
+        $category_name_2 = $categories[1]->name;
+        $category_name_3 = $categories[2]->name;
 
         return view('index')->with('title',Setting::first()->site_name)
                             ->with('categories',Category::take(5)->get())
