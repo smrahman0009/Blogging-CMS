@@ -18,12 +18,6 @@ class UserSeeder extends Seeder
                 'name' => 'miead',
                 'email' => 'miead@gmail.com',
                 'password' => bcrypt('password'),
-            ]
-        );
-        
-        Profile::create(
-            [
-                'user_id' => $user->id,
                 'is_admin' => '1',
                 'avatar' => 'link to image',
                 'about' => 'Contrary to popular belief, Lorem Ipsum is not simply random text.
@@ -41,5 +35,6 @@ class UserSeeder extends Seeder
                 'facebook' => 'facebook.com'
             ]
         );
+
     }
 }

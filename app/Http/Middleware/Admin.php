@@ -16,7 +16,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()->profile->is_admin){
+        if(!Auth::user()->is_admin){
             toastr()->info("You don't have permission to perform this action");
             return redirect()->back();
         }

@@ -92,23 +92,24 @@ class ProfilesController extends Controller
             
             $avatar->move('uploads/posts',$avatar_new_name);
 
-            $u_user->profile->avatar = 'uploads/posts/' . $avatar_new_name;
+            // unlink($u_user->avatar);
+            $u_user->avatar = 'uploads/posts/' . $avatar_new_name;
 
         }
 
         $u_user->name = $request->name;
         $u_user->email = $request->email;
-        $u_user->profile->facebook = $request->facebook;
-        $u_user->profile->gmail = $request->gmail;
-        $u_user->profile->about = $request->about;
-        $u_user->profile->gmail = $request->gmail;
+        $u_user->facebook = $request->facebook;
+        $u_user->gmail = $request->gmail;
+        $u_user->about = $request->about;
+        $u_user->gmail = $request->gmail;
         
         if($request->has('password')){
             $u_user->password = bcrypt($request->password);
         }
 
         $u_user->save();
-        $u_user->profile->save();
+        $u_user->save();
         toastr()->success('Update profile successfully');
         return redirect()->back();
     }

@@ -29,12 +29,12 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                @if($user->profile->avatar)
+                @if($user->avatar)
 
                 <div class="form-group">
                     <label for="avatar">Current Avatar</label>
                     <div class="text-left">
-                        <img src="{{asset($user->profile->avatar)}}" class="rounded" alt="..." height="400px" width="500px" >
+                        <img src="{{asset($user->avatar)}}" class="rounded" alt="..." height="200px" width="200px" >
                     </div>
                 </div>
                 @endif
@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <label for="about">About</label>
                         <textarea name="about" id="about" cols="6" rows="6" class="form-control @error('avatar') is-invalid @enderror">
-                            {{$user->profile->about}}
+                            {{$user->about}}
                         </textarea>
                     @error('about')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -56,14 +56,14 @@
                 </div>
                 <div class="form-group">
                     <label for="facebook">facebook</label>
-                    <input type="text" name="facebook" id="facebook" value="{{$user->profile->facebook}}" class="form-control @error('facebook') is-invalid @enderror">
+                    <input type="text" name="facebook" id="facebook" value="{{$user->facebook}}" class="form-control @error('facebook') is-invalid @enderror">
                     @error('facebook')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="gmail">gmail</label>
-                    <input type="text" name="gmail" id="gmail" value="{{$user->profile->gmail}}" class="form-control @error('gmail') is-invalid @enderror">
+                    <input type="text" name="gmail" id="gmail" value="{{$user->gmail}}" class="form-control @error('gmail') is-invalid @enderror">
                     @error('gmail')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

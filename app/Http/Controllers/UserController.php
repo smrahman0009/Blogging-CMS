@@ -75,9 +75,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_profile)
     {
-        $user_profile = Profile::find(['user_id'=>$id])->first();
+        // $user_profile = Profile::find(['user_id'=>$id])->first();
         $user_permission = 'ADMIN';
         if($user_profile->is_admin){
             $user_profile->is_admin = 0;
@@ -112,7 +112,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        $user->profile->delete();
+        // $user->profile->delete();
 
         $user->delete();
         toastr()->success('Delete profile successfully');

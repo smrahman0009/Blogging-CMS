@@ -26,13 +26,13 @@
                 @foreach($users as $user)
                 <tr>
                     <td>
-                        <img src="{{$user->profile->avatar ? asset($user->profile->avatar) : asset('uploads/profile/profile_male_2.png')}}" alt="" width="50px" height="50px" style="border-radius:10px">
+                        <img src="{{$user->avatar ? asset($user->avatar) : asset('uploads/profile/profile_male_2.png')}}" alt="" width="50px" height="50px" style="border-radius:10px">
                     </td>
                     <td>
                         {{$user->email}}
                     </td>
                     <td>
-                        @if($user->profile->is_admin)
+                        @if($user->is_admin)
                             <a href="{{route('user-edit',['id' => $user->id])}}" class="btn btn-sm btn-warning">
                                 <span class="glyphicon glyphicon-trash">Remove Permission</span>
                             </a>

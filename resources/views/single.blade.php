@@ -17,7 +17,7 @@
                 <article class="hentry post post-standard-details">
 
                     <div class="post-thumb">
-                        <img src="{{$post->featured}}" alt="seo">
+                        <img src="{{asset($post->featured)}}" alt="seo">
                     </div>
 
                     <div class="post__content">
@@ -80,16 +80,16 @@
                         <div class="author-info">
                             <h5 class="author-name">{{$post->user->name}}</h5>
                         </div>
-                        <p class="text">{{$post->user->profile->about}}
+                        <p class="text">{{$post->about}}
                         </p>
                         <div class="socials">
-                            @if($post->user->profile->facebook)
-                                <a href="{{$post->user->profile->facebook}}" class="social__item">
+                            @if($post->facebook)
+                                <a href="{{$post->facebook}}" class="social__item">
                                     <img src="{{asset('app/svg/circle-facebook.svg')}}" alt="facebook">
                                 </a>
                             @endif
-                            @if($post->user->profile->facebook)
-                                <a href="{{$post->user->profile->gmail}}" class="social__item">
+                            @if($post->facebook)
+                                <a href="{{$post->gmail}}" class="social__item">
                                     <img src="{{asset('app/svg/google.svg')}}" alt="google">
                                 </a>
                             @endif

@@ -4,6 +4,8 @@
 /storage/*.key
 /vendor
 /app/blog-template
+/public/uploads/posts
+/public/uploads/profile
 .env
 .env.backup
 .phpunit.result.cache
