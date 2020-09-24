@@ -4,10 +4,18 @@
     <table class="table table-hover">
         <thead>
             <th>
-                 <a type="button" class="btn btn-success" href="{{route('post-create')}}">Create New</a>
+                @if(Auth::user()->post_permission)
+                    <a type="button" class="btn btn-success" href="{{route('post-create')}}">Create New</a>
+                @else
+                    <a type="button" data-toggle="modal" data-target="#warningModal" class="btn btn-success" href="#">Create New</a>
+                @endif 
             </th>
             <th>
-                 <a type="button" class="btn btn-secondary" href="{{route('post-trashed')}}">Trashed Posts</a>
+                @if(Auth::user()->post_permission)
+                    <a type="button" class="btn btn-secondary" href="{{route('post-trashed')}}">Trashed Posts</a>
+                @else
+                    <a type="button" data-toggle="modal" data-target="#warningModal" class="btn btn-secondary" href="#">Trashed Posts</a>
+                @endif 
             </th>
         </thead>
         <thead>
@@ -47,7 +55,7 @@
                     </td>
                     <td>
                         <div class="btn-group">
-                            <button type="button" class="btn dropdown-toggle btn-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn dropdown-toggle btn-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {{ !Auth::user()->post_permission ? 'disabled' : ''}}>
                                 Action
                             </button>
                             <div class="dropdown-menu">
